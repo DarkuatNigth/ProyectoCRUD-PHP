@@ -1,0 +1,52 @@
+<div class="mat-elevation-z2" style="width: 30%; padding: 30px; margin: 50px auto; display: flex;justify-content: center;">
+    <form [formGroup]="objFormEmpleado">
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Nombre Completo</mat-label>
+                <input matInput formControlName="nombreCompleto">
+            </mat-form-field> 
+        </div>
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Estado</mat-label>
+                <input matInput formControlName="estado" readonly="true">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Sueldo</mat-label>
+                <input matInput type="number" formControlName="salario">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field>
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput formControlName="correo">
+            </mat-form-field>
+        </div>
+        
+        <div class="flex">
+            <mat-form-field>
+            <mat-label>Fecha Ingreso</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fechaIngreso">
+            <mat-hint>dd/MM/yyyy</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field>
+              <mat-label>Seleccione un Departamento</mat-label>
+              <mat-select  formControlName="intDepartamentoId" name="selecDepa">
+                <mat-option *ngFor="let departamento of objListDepartamento" [value]="departamento.id">
+                  {{ departamento.nombreDepartamento }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        <div class="flex">
+            <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+            <button mat-flat-button color="warn" (click)="volver()" style="margin-left: 8px;">Volver</button>
+        </div>
+    </form>
+</div>
